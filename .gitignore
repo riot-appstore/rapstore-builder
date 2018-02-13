@@ -69,3 +69,6 @@ docs/_build/
 # PyBuilder
 target/
 
+# Manually added
+.pytest_cache
+test-report.xml
