@@ -20,6 +20,21 @@ Usage
     --logdir LOGDIR  Directory to save logs
 
 
+Documentation
+-------------
+
+The generated documentation is stored in `docs` and should be kept updated in
+the master branch.
+
+It can be generated with
+
+    tox -e doc
+
+Last master version its also available on:
+
+    https://riot-appstore.github.io/rapstore-builder/
+
+
 Design
 ------
 
@@ -37,6 +52,7 @@ Testing is done by running `tox`:
       py35-flake8: commands succeeded
       py35-tests: commands succeeded
       py35-checksetup: commands succeeded
+      doc: commands succeeded
       congratulations :)
 
 
