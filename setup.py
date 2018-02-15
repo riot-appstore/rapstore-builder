@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 
 PACKAGE = 'rapstorebuilder'
-INSTALL_REQUIRES = ['bottle']
+INSTALL_REQUIRES = ['bottle', 'paste']
 
 
 def get_version(package):
