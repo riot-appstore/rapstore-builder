@@ -41,4 +41,9 @@ setup(
         'Framework :: Bottle',
     ],
     install_requires=INSTALL_REQUIRES,
+    entry_points={
+        'console_scripts': [
+            'rapstore-builder=rapstorebuilder.rest_server:main',
+        ],
+    },
 )
