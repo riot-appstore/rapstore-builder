@@ -72,3 +72,4 @@ target/
 # Manually added
 .pytest_cache
 test-report.xml
+devenv/
