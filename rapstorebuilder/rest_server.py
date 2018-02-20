@@ -1,13 +1,19 @@
 """RAPStore Builder and Storage REST server implementation."""
 
+import logging
 import argparse
 
 import bottle
+
+import rapstorebuilder.log
 
 
 PARSER = argparse.ArgumentParser()
 PARSER.add_argument('host', help='Server address to bind to')
 PARSER.add_argument('port', type=int, help='Server port to bind to')
+PARSER.add_argument('--logdir', help='Directory to save logs')
+
+LOGGER = logging.getLogger(__name__)
 
 
 class BuilderRESTServer(bottle.Bottle):
@@ -34,6 +40,7 @@ class BuilderRESTServer(bottle.Bottle):
     @staticmethod
     def hello():
         """Hello world test route."""
+        LOGGER.info('hello')
         return 'Hello World!\n'
 
 
@@ -41,5 +48,7 @@ def main():
     """Start REST Server."""
     opts = PARSER.parse_args()
 
+    rapstorebuilder.log.configure_logging(opts.logdir)
+
     server = BuilderRESTServer()
-    server.run(host=opts.host, port=opts.port)
+    server.run(host=opts.host, port=opts.port, quiet=True)

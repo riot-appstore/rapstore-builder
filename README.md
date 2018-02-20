@@ -9,14 +9,15 @@ It is implemented as a REST service using `bottle`.
 Usage
 -----
 
-    usage: rapstore-builder [-h] host port
+    usage: rapstore-builder [-h] [--logdir LOGDIR] host port
 
     positional arguments:
-    host        Server address to bind to
-    port        Server port to bind to
+    host             Server address to bind to
+    port             Server port to bind to
 
     optional arguments:
-    -h, --help  show this help message and exit
+    -h, --help       show this help message and exit
+    --logdir LOGDIR  Directory to save logs
 
 
 Design
