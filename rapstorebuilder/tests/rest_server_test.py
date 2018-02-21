@@ -5,6 +5,7 @@ import os.path
 import sys
 import shutil
 import tempfile
+import base64
 from unittest import mock
 
 import webtest
@@ -25,6 +26,25 @@ class TestBuilderRESTServer():
         """Test '/hello' route."""
         ret = self.app.get('/hello')
         assert ret.text == 'Hello World!\n'
+
+    def test_build_application(self):
+        """Test '/builder/build/riot_application/...'.
+
+        Simple test checking content in 'working' case.
+        """
+        uuid = 'a8098c1a-f86e-11da-bd1a-00112444be1e'
+        board = 'iotlab-m3'
+        url = '/builder/build/riot_application/{uuid}/{board}'
+        ret = self.app.post(url.format(uuid=uuid, board=board))
+
+        # Check there is 'build_out', a 'build_ret' and an 'elf' file
+        assert isinstance(ret.json['build_out'], str)
+        assert ret.json['build_ret'] == 0
+
+        # elffile non empty as 'build_ret' == 0
+        b64elffile = ret.json['files']['elf'].encode('ascii')
+        elffile = base64.b64decode(b64elffile)
+        assert elffile
 
 
 class TestMain():
