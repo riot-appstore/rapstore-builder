@@ -1,0 +1,7 @@
+Dockerfile
+.*
+build
+*cov
+*.xml
+*.log
+*.egg-info
